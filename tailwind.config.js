@@ -8,6 +8,8 @@ export default {
         black: "#1A1A1F",
         success: "#14D81C",
         error: "#EA1919",
+        "light-grey": "#85858D",
+        "dark-grey": "#404049",
       },
     },
   },
