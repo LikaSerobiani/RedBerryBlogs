@@ -22,7 +22,7 @@ export default function BlogsListing() {
 
   return (
     <div className="container">
-      <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-start gap-x-[32px] gap-y-[56px] mb-[66px]">
         {blogs.map((blog) => (
           <div key={blog.id}>
             <BlogCard

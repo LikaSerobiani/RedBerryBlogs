@@ -23,7 +23,7 @@ export default function BlogCard({
         <span className="text-light-grey text-[12px] leading-4 not-italic">
           {publish_date}
         </span>
-        <span className="text-black text-[20px] leading-7 font-medium">
+        <span className="text-black text-[20px] leading-7 font-medium w-[408px]">
           {title}
         </span>
         {/* categories */}
@@ -46,7 +46,7 @@ export default function BlogCard({
           {description}
         </span>
         <div className="flex flex-row items-center cursor-pointer">
-          <button className="text-primary text-[14px] leading-5 not-italic">
+          <button className="text-primary text-[14px] leading-5 not-italic font-medium">
             სრულად ნახვა
           </button>
           <ArrowIcon />
