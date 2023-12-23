@@ -1,9 +1,9 @@
+// HomePage.jsx
+import React from "react";
 import Blog from "../assets/images/Blog.png";
-
 import BlogsListing from "../components/Blogs/BlogsListing";
 import Categories from "../components/Categories/Categories";
 
-// HomePage.jsx
 export default function HomePage({ blogs, categories }) {
   return (
     <div className="container">
@@ -11,7 +11,7 @@ export default function HomePage({ blogs, categories }) {
         <span className="text-[64px] leading-[72px] font-bold not-italic">
           ბლოგი
         </span>
-        <img src={Blog} />
+        <img src={Blog} alt="Blog Icon" />
       </div>
       <Categories categories={categories} />
       <BlogsListing blogs={blogs} />
