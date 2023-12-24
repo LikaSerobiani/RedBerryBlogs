@@ -39,7 +39,7 @@ export default function BlogCard({
           {title}
         </span>
         {/* categories */}
-        <div className="flex gap-[16px]">
+        <div className="flex gap-[11px]">
           {categories.map((category) => (
             <span
               key={category.id}
@@ -57,11 +57,11 @@ export default function BlogCard({
         <span className="text-dark-grey text-base not-italic line-clamp-2 w-[408px] ">
           {description}
         </span>
-        <div className="flex flex-row items-center cursor-pointer">
-          <button
-            onClick={handleButtonClick}
-            className="text-primary text-[14px] leading-5 not-italic font-medium"
-          >
+        <div
+          className="flex flex-row items-center cursor-pointer"
+          onClick={handleButtonClick}
+        >
+          <button className="text-primary text-[14px] leading-5 not-italic font-medium">
             სრულად ნახვა
           </button>
           <ArrowIcon />
