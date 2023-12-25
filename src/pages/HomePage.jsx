@@ -63,7 +63,7 @@ export default function HomePage() {
       </div>
       <Categories
         categories={categories}
-        searchParams={searchParams}
+        selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
       <BlogsListing blogs={blogs} filteredBlogs={filteredBlogs} />

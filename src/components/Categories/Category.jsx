@@ -1,8 +1,11 @@
 import React from "react";
 
-export default function Category({ category, onChooseCategory, searchParams }) {
-  const categorySearchParams = searchParams.get("category");
-  const isCategorySelected = categorySearchParams === category;
+export default function Category({
+  category,
+  onChooseCategory,
+  selectedCategory,
+}) {
+  const isCategorySelected = selectedCategory === category;
 
   const handleClick = () => {
     onChooseCategory(category);

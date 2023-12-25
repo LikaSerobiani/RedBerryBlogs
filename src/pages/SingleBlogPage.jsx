@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get } from "../api/api";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import Category from "../components/Categories/Category";
 import ArrowLeftIcon from "../components/Icons/ArrowLeftIcon";
 import { Link } from "react-router-dom";
@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 export default function SingleBlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const selectedCategory = searchParams.get("category");
 
   const fetchData = async () => {
     try {
@@ -59,7 +62,11 @@ export default function SingleBlogPage() {
 
                 <div className="flex gap-[16px] text-black">
                   {blog.categories.map((category) => (
-                    <Category key={category.id} category={category} />
+                    <Category
+                      key={category.id}
+                      category={category}
+                      selectedCategory={selectedCategory}
+                    />
                   ))}
                 </div>
               </div>
