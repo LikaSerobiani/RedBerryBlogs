@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../assets/images/logo.png";
 import { Link } from "react-router-dom";
+import LoginForm from "../components/LogInForm/LoginForm";
 export default function Header() {
   return (
     <header className="border-b border-solid border-gray-300 bg-white">
@@ -11,9 +12,7 @@ export default function Header() {
           </Link>
         </div>
         <div>
-          <button className="bg-primary py-[10px] px-[20px] rounded-[8px] text-white font-medium text-sm cursor-pointer">
-            შესვლა
-          </button>
+          <LoginForm />
         </div>
       </div>
     </header>

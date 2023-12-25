@@ -1,15 +1,30 @@
 import React from "react";
 
-export default function Category({ category }) {
+export default function Category({ category, onChooseCategory, searchParams }) {
+  const categorySearchParams = searchParams.get("category");
+  const isCategorySelected = categorySearchParams === category;
+
+  const handleClick = () => {
+    onChooseCategory(category);
+  };
+
   return (
-    <span
-      className="text-[12px] not-italic font-medium leading-4 px-[16px] py-[8px] rounded-[30px] cursor-pointer"
-      style={{
-        backgroundColor: category.background_color,
-        color: category.text_color,
-      }}
+    <div
+      className={`items-center flex cursor-pointer underline-offset-4 ${
+        isCategorySelected ? "underline text-secondary" : "bg-transparent"
+      }`}
+      onClick={handleClick}
     >
-      {category.title}
-    </span>
+      {" "}
+      <span
+        className="text-[12px] not-italic font-medium leading-4 px-[16px] py-[8px] rounded-[30px] cursor-pointer"
+        style={{
+          backgroundColor: category.background_color,
+          color: category.text_color,
+        }}
+      >
+        {category.title}
+      </span>
+    </div>
   );
 }

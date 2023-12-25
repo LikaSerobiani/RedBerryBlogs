@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseURL = "https://api.blog.redberryinternship.ge/api";
+const token = import.meta.env.VITE_API_TOKEN;
 
 const api = axios.create({
   baseURL,
@@ -11,7 +12,7 @@ const defaultHeaders = {
   "Content-Type": "application/json",
 };
 
-export const get = async (url, params = {}, token = null) => {
+export const get = async (url, params = {}) => {
   try {
     const headers = {
       ...defaultHeaders,
@@ -25,7 +26,7 @@ export const get = async (url, params = {}, token = null) => {
   }
 };
 
-export const post = async (url, data = {}, token = null) => {
+export const post = async (url, data = {}) => {
   try {
     const headers = {
       ...defaultHeaders,

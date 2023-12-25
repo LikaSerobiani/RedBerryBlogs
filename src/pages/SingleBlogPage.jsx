@@ -8,11 +8,10 @@ import { Link } from "react-router-dom";
 export default function SingleBlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
-  const token = import.meta.env.VITE_API_TOKEN;
 
   const fetchData = async () => {
     try {
-      const result = await get(`/blogs/${id}`, {}, token);
+      const result = await get(`/blogs/${id}`, {});
       setBlog(result);
     } catch (error) {
       console.error("Error fetching data:", error);
