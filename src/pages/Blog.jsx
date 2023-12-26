@@ -7,7 +7,7 @@ import ArrowLeftIcon from "../components/Icons/ArrowLeftIcon";
 import { Link } from "react-router-dom";
 import CardsCarousel from "../components/Carousel/CardsCarousel";
 
-export default function Home() {
+export default function Blog() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [blogsData, setBlogsData] = useState([]);

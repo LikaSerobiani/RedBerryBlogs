@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const baseURL = "https://api.blog.redberryinternship.ge/api";
+
 const token = import.meta.env.VITE_API_TOKEN;
 
 const api = axios.create({
