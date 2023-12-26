@@ -1,7 +1,7 @@
 import React from "react";
-import BlogCard from "./BlogCard";
+import Card from "./Card";
 
-export default function BlogsListing({ blogs, loading, filteredBlogs }) {
+export default function Listing({ blogs, loading, filteredBlogs }) {
   const displayBlogs = filteredBlogs.length > 0 ? filteredBlogs : blogs;
 
   return (
@@ -12,7 +12,7 @@ export default function BlogsListing({ blogs, loading, filteredBlogs }) {
         <div className="flex flex-wrap justify-start gap-x-[32px] gap-y-[56px] mb-[66px]">
           {displayBlogs.map((blog) => (
             <div key={blog.id}>
-              <BlogCard
+              <Card
                 id={blog.id}
                 image={blog.image}
                 author={blog.author}

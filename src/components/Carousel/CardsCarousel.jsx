@@ -1,17 +1,17 @@
 import React from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import BlogCard from "../Blogs/BlogCard";
+import Card from "../Blogs/Card";
 
 import "swiper/css";
 
-export default function CardsSlider({ blogs }) {
+export default function CardsCarousel({ blogs }) {
   return (
     <div className="mt-10 mb-[475px]">
       <Swiper spaceBetween={32} slidesPerView={3}>
         {blogs.map((blog) => (
           <SwiperSlide key={blog.id}>
-            <BlogCard
+            <Card
               id={blog.id}
               image={blog.image}
               author={blog.author}

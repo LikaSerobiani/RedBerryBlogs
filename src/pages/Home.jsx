@@ -3,10 +3,10 @@ import { useSearchParams } from "react-router-dom";
 import { get } from "../api/api";
 
 import Blog from "../assets/images/Blog.png";
-import BlogsListing from "../components/Blogs/BlogsListing";
+import Listing from "../components/Blogs/Listing";
 import Categories from "../components/Categories/Categories";
 
-export default function HomePage() {
+export default function Home() {
   const [blogsLoading, setBlogsLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [filteredBlogs, setFilteredBlogs] = useState([]);
@@ -66,7 +66,7 @@ export default function HomePage() {
         selectedCategory={selectedCategory}
         onSelectCategory={handleSelectCategory}
       />
-      <BlogsListing blogs={blogs} filteredBlogs={filteredBlogs} />
+      <Listing blogs={blogs} filteredBlogs={filteredBlogs} />
     </div>
   );
 }

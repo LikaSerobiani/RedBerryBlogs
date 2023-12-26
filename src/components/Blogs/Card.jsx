@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ArrowIcon from "../Icons/ArrowIcon";
 
-export default function BlogCard({
+export default function Card({
   id,
   title,
   image,

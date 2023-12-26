@@ -5,9 +5,9 @@ import { useParams, useSearchParams } from "react-router-dom";
 import Category from "../components/Categories/Category";
 import ArrowLeftIcon from "../components/Icons/ArrowLeftIcon";
 import { Link } from "react-router-dom";
-import CardsSlider from "../components/CardsSlider/swiper";
+import CardsCarousel from "../components/Carousel/CardsCarousel";
 
-export default function SingleBlogPage() {
+export default function Home() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
   const [blogsData, setBlogsData] = useState([]);
@@ -109,7 +109,7 @@ export default function SingleBlogPage() {
         <span className="text-[32px] text-[#1A1A1F] font-bold">
           მსგავსი სტატიები
         </span>
-        {blogsData?.length ? <CardsSlider blogs={blogsData} /> : null}
+        {blogsData?.length ? <CardsCarousel blogs={blogsData} /> : null}
       </div>
     );
   };
