@@ -1,13 +1,16 @@
+// SingleBlogPage.jsx
 import React, { useState, useEffect } from "react";
 import { get } from "../api/api";
 import { useParams, useSearchParams } from "react-router-dom";
 import Category from "../components/Categories/Category";
 import ArrowLeftIcon from "../components/Icons/ArrowLeftIcon";
 import { Link } from "react-router-dom";
+import CardsSlider from "../components/CardsSlider/swiper";
 
 export default function SingleBlogPage() {
   const { id } = useParams();
   const [blog, setBlog] = useState(null);
+  const [blogsData, setBlogsData] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const selectedCategory = searchParams.get("category");
@@ -16,6 +19,23 @@ export default function SingleBlogPage() {
     try {
       const result = await get(`/blogs/${id}`, {});
       setBlog(result);
+      fetchBlogs(result);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  const fetchBlogs = async (blog) => {
+    try {
+      const result = await get("/blogs", {});
+
+      const filteredBlogs = result.data.filter((obj) => {
+        return obj.categories.some((category) =>
+          blog.categories.some((blog) => blog.id === category.id)
+        );
+      });
+
+      setBlogsData(filteredBlogs);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -23,6 +43,7 @@ export default function SingleBlogPage() {
 
   useEffect(() => {
     fetchData();
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, [id]);
 
   const showBlog = () => {
@@ -82,7 +103,21 @@ export default function SingleBlogPage() {
     }
   };
 
+  const BlogsSlider = () => {
+    return (
+      <div className="mx-[76px] mt-[100px]">
+        <span className="text-[32px] text-[#1A1A1F] font-bold">
+          მსგავსი სტატიები
+        </span>
+        {blogsData?.length ? <CardsSlider blogs={blogsData} /> : null}
+      </div>
+    );
+  };
+
   return (
-    <div className="container flex justify-start pt-[40px]">{showBlog()}</div>
+    <>
+      <div className="container flex justify-start pt-[40px]">{showBlog()}</div>
+      {BlogsSlider()}
+    </>
   );
 }

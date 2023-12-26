@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ArrowIcon from "../Icons/ArrowIcon";
 
 export default function BlogCard({
@@ -11,12 +11,6 @@ export default function BlogCard({
   description,
   categories,
 }) {
-  const navigate = useNavigate();
-
-  const handleButtonClick = () => {
-    navigate(`/blogs/${id}`);
-  };
-
   return (
     <div className="flex gap-[24px] flex-col">
       {/* image */}
@@ -57,15 +51,14 @@ export default function BlogCard({
         <span className="text-dark-grey text-base not-italic line-clamp-2 w-[408px] ">
           {description}
         </span>
-        <div
-          className="flex flex-row items-center cursor-pointer"
-          onClick={handleButtonClick}
-        >
-          <button className="text-primary text-[14px] leading-5 not-italic font-medium">
-            სრულად ნახვა
-          </button>
-          <ArrowIcon />
-        </div>
+        <Link to={`/blogs/${id}`}>
+          <div className="flex flex-row items-center cursor-pointer">
+            <button className="text-primary text-[14px] leading-5 not-italic font-medium">
+              სრულად ნახვა
+            </button>
+            <ArrowIcon />
+          </div>
+        </Link>
       </div>
     </div>
   );
