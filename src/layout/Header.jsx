@@ -1,13 +1,29 @@
 import React, { useState } from "react";
 import Logo from "../assets/images/logo.png";
-import { Link } from "react-router-dom";
-import LoginForm from "../components/Modals/Login";
+import { Link, useNavigate } from "react-router-dom";
+import Login from "../components/Modals/Login";
+import Success from "../components/Modals/Success";
+import Button from "../components/Button";
 
 export default function Header() {
+  const navigate = useNavigate();
+
   const [showModal, setShowModal] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState();
+
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setShowSuccessModal(true);
+  };
+
+  const handleAddBlog = () => {
+    navigate("/create-blog");
+  };
 
   return (
     <header className="border-b border-solid border-gray-300 bg-white">
@@ -18,13 +34,22 @@ export default function Header() {
           </Link>
         </div>
         <div>
-          <button
-            className="bg-primary py-[10px] px-[20px] rounded-[8px] text-white font-medium text-sm cursor-pointer"
-            onClick={handleShow}
-          >
-            შესვლა
-          </button>
-          <LoginForm showModal={showModal} handleClose={handleClose} />
+          {isLoggedIn ? (
+            <Button title="დაამატე ბლოგი" onClick={handleAddBlog} />
+          ) : (
+            <Button title="შესვლა" onClick={handleShow} />
+          )}
+
+          <Login
+            showModal={showModal}
+            handleClose={handleClose}
+            onLoggedIn={handleLogin}
+          />
+          <Success
+            title="წარმატებული ავტორიზაცია"
+            showModal={showSuccessModal}
+            handleClose={() => setShowSuccessModal(false)}
+          />
         </div>
       </div>
     </header>

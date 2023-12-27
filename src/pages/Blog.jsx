@@ -1,4 +1,3 @@
-// SingleBlogPage.jsx
 import React, { useState, useEffect } from "react";
 import { get } from "../api/api";
 import { useParams, useSearchParams } from "react-router-dom";

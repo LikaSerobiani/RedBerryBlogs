@@ -1,49 +1,62 @@
-/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import Modal from "react-modal";
-import CloseIcon from "../Icons/CloseIcon";
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    transform: "translate(-50%, -50%)",
-  },
-};
+import { post } from "../../api/api";
+import Modal from "../Modals/Modal";
+import Button from "../Button";
+import Input from "../Input";
 
-export default function Login({ showModal, handleClose }) {
+export default function Login({ showModal, handleClose, onLoggedIn }) {
   const [email, setEmail] = useState("");
+  const [errors, setErrors] = useState({});
+  const [isEmailValid, setIsEmailValid] = useState(false);
 
-  const handleLogin = () => {
-    console.log("Logged in with email:", email);
-
-    handleClose();
+  const handleLogin = async () => {
+    if (isEmailValid) {
+      try {
+        await post("/login", {
+          email: email,
+        });
+        onLoggedIn(true);
+        handleClose(true);
+        setEmail("");
+        setErrors({});
+      } catch (error) {
+        setErrors(error.response?.data?.errors);
+      }
+    }
   };
-  return (
-    <Modal
-      isOpen={showModal}
-      onRequestClose={handleClose}
-      style={customStyles}
-      contentLabel="Login Modal"
-    >
-      <button onClick={handleClose} className="close-btn">
-        <CloseIcon />
-      </button>
-      <h2>Login</h2>
-      <form>
-        <label>Email address</label>
-        <input
-          type="email"
-          placeholder="Enter email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
 
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
-      </form>
+  return (
+    <Modal isModalOpen={showModal} onClose={handleClose}>
+      <div>
+        <h2 className="text-center text-2xl text-bold">შესვლა</h2>
+        <Input
+          type="text"
+          id="emailInput"
+          label="ელ-ფოსტა"
+          value={email}
+          isValid={!errors?.email}
+          name="input"
+          placeholder="Example@redberry.ge"
+          validation={(value) => {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const isValid =
+              emailRegex.test(value) && value.endsWith("@redberry.ge");
+            setIsEmailValid(isValid);
+            return {
+              isValid: isValid,
+              errorMessage: isValid
+                ? errors.email
+                  ? "ელ-ფოსტა არ მოიძებნა"
+                  : "ელ-ფოსტა არ მოიძებნა"
+                : "მეილი უნდა მთავრდებოდეს @redberry.ge-ით",
+            };
+          }}
+          onChange={(e) => setEmail(e)}
+        />
+        <div className="flex justify-center w-100">
+          <Button title="შესვლა" onClick={handleLogin} width="100%" />
+        </div>
+      </div>
     </Modal>
   );
 }

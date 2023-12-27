@@ -7,7 +7,7 @@ import "swiper/css";
 
 export default function CardsCarousel({ blogs }) {
   return (
-    <div className="mt-10 mb-[475px]">
+    <div className="mt-10 mb-10">
       <Swiper spaceBetween={32} slidesPerView={3}>
         {blogs.map((blog) => (
           <SwiperSlide key={blog.id}>
