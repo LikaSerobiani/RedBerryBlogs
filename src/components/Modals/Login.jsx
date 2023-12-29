@@ -19,6 +19,7 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
         handleClose(true);
         setEmail("");
         setErrors({});
+        localStorage.setItem("isLoggedIn", true);
       } catch (error) {
         setErrors(error.response?.data?.errors);
       }
@@ -28,7 +29,7 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
   return (
     <Modal isModalOpen={showModal} onClose={handleClose}>
       <div>
-        <h2 className="text-center text-2xl text-bold">შესვლა</h2>
+        <h2 className="text-center text-2xl font-bold">შესვლა</h2>
         <Input
           type="text"
           id="emailInput"

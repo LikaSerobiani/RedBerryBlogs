@@ -11,6 +11,7 @@ export default {
         error: "#EA1919",
         "light-grey": "#85858D",
         "dark-grey": "#404049",
+        "lightest-grey": "#F4F3FF",
       },
     },
   },

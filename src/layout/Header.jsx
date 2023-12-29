@@ -10,7 +10,7 @@ export default function Header() {
 
   const [showModal, setShowModal] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState();
-
+  localStorage.getItem("isLoggedIn");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleShow = () => setShowModal(true);
