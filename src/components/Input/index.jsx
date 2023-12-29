@@ -50,8 +50,8 @@ const Input = ({
         className="w-full p-2 border border-solid pl-4 text-sm placeholder-[#85858D] border-primary focus:outline-none focus:ring focus:border-purple-500 rounded-lg bg-[#F7F7FF]"
         onChange={handleInputChange}
       />
-      {isValid && (
-        <div className="text-red-500 text-sm mt-1">
+      {!isValid && (
+        <div className="text-red-500 text-sm flex flex-row gap-[8px] mt-[8px]">
           <ErrorIcon /> {errorMessage || "Invalid input."}
         </div>
       )}
