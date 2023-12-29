@@ -19,7 +19,6 @@ export default function Login({ showModal, handleClose, onLoggedIn }) {
         handleClose(true);
         setEmail("");
         setErrors({});
-        localStorage.setItem("isLoggedIn", true);
       } catch (error) {
         setErrors(error.response?.data?.errors);
       }

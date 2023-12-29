@@ -12,13 +12,7 @@ export default function Category({
   };
 
   return (
-    <div
-      className={`items-center flex cursor-pointer underline-offset-4 ${
-        isCategorySelected ? "underline text-secondary" : "bg-transparent"
-      }`}
-      onClick={handleClick}
-    >
-      {" "}
+    <div className="items-center flex cursor-pointer" onClick={handleClick}>
       <span
         className="text-[12px] not-italic font-medium leading-4 px-[16px] py-[8px] rounded-[30px] cursor-pointer"
         style={{

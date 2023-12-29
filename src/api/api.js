@@ -8,10 +8,7 @@ const api = axios.create({
   baseURL,
 });
 
-const defaultHeaders = {
-  Accept: "application/json",
-  "Content-Type": "application/json",
-};
+const defaultHeaders = {};
 
 export const get = async (url, params = {}) => {
   try {
